@@ -74,6 +74,8 @@ async function run() {
     const atAll = core.getInput('at_all') || true;
     const enablePrerelease = core.getInput('enable_prerelease') || false;
 
+    core.debug("Start Get LatestRelease");
+
     const octokit = github.getOctokit(myToken);
 
     const response = await octokit.rest.repos.getLatestRelease({
@@ -81,6 +83,8 @@ async function run() {
       repo,
     });
 
+    core.debug("LatestRelease: " + JSON.stringify(response));
+    
     if (enablePrerelease) {
       const releasesResponse = await octokit.request('GET /repos/{owner}/{repo}/releases', {
         owner,
