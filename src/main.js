@@ -60,6 +60,7 @@ function sendReleaseNotice(params) {
 
 async function run() {
   try {
+    core.debug("\nBegin.......\n")
     const myToken = core.getInput('GITHUB_TOKEN');
     const dingTalkTokens = core.getInput('DING_TALK_TOKEN');
     if (!dingTalkTokens) {
